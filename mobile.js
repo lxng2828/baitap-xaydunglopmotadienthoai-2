@@ -19,6 +19,7 @@ class Mobile {
         this.isOn = true;
     }
 
+
     turnOff() {
         this.isOn = false;
     }
@@ -32,9 +33,11 @@ class Mobile {
     }
 
     sendMessage(receiver) {
-        receiver.receiveMessage(this.draftingMessage);
-        this.draftingMessage = "";
-        this.battery = this.battery - 10;
+        if (this.battery > 0) {
+            receiver.receiveMessage(this.draftingMessage);
+            this.draftingMessage = "";
+            this.battery = this.battery - 10;
+        }
     }
 
     receiveMessage(message) {
